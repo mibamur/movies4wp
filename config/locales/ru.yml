@@ -219,6 +219,19 @@ ru:
   schet_from: Источник
   schet_to: Приемник
   rab_image: Счет
+  post_title: Заголовок
+  post_name: url имя
+  post_content: контент
+  post_status: статус WP
+  sticky: черновик WP
+  custom_fields: Другие поля
+  movies_length: Длина фильма
+  event_imdb_url: url imdb
+  poster: Постер
+  poster_big: Постер большой
+  kinopoisk_id: kinopoisk_idd
+  main_price: Цена базовая
+
   date:
     formats:
       default: "%d.%m.%Y"

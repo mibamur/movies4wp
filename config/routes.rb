@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     end
   end
 
+  mount Upmin::Engine => '/admin'
+
   devise_for :logins
   resources :logins
   resources :roles
