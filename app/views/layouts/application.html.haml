@@ -1,0 +1,131 @@
+!!! 5
+%html
+  %head
+    %title Jmob4
+    %meta{:content => "target-densitydpi=device-dpi, height=device-height,width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no", :name => "viewport"}/
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+    %link{ :rel=>"stylesheet", :href=>"/css/jquery.mobile.flatui.css"}
+
+    = csrf_meta_tags
+    :css
+      input.plc1::-webkit-input-placeholder {
+        color:red !important;
+      }
+
+  -#%body.ui-mobile-viewport.ui-overlay-a
+  %body.ui-mobile-viewport
+
+    -#.ui-responsive-panel{"data-role" => "page", :style => "max-height:440px; min-height:440px;", "data-theme" => "a"}
+    .ui-responsive-panel{"data-role" => "page", "data-theme" => "a"}
+
+      %div{"data-role" => "header", "data-theme" => "b"}
+        %h1
+          = Date.today.strftime('%d.%m.%Y')
+
+          / = text_field :rashod, :schet_id, :value => Schet.where(login_id: current_login.id).last.id
+        / current_login.email 
+
+        %a.jqm-navmenu-link.ui-btn.ui-btn-icon-notext.ui-corner-all.ui-icon-bars.ui-nodisc-icon.ui-btn-left{"data-inline" => "true", "data-mini" => "true", "data-role" => "button", :href => "#leftpanel3"} Меню
+        %a.ui-btn.ui-btn-icon-notext.ui-corner-all.ui-icon-plus.ui-nodisc-icon.ui-btn-right{"data-inline" => "true", "data-mini" => "true", "data-role" => "button", :href => "#rightpanel3"} Меню
+      .ui-content{:role => "main"}
+
+        -#.container
+          .row
+            .span3.bs-docs-sidebar
+              %ul.nav.nav-list.bs-docs-sidenav.affix
+                %li.js-basic_line
+                  = link_to  basic_line_charts_path, remote: true do
+                    %i.icon-chevron-right>
+                    Basic Liine
+                %li.js-line_ajax
+                  = link_to  line_ajax_charts_path, remote: true do
+                    %i.icon-chevron-right
+                    Ajax loaded data, clickable points
+                %li.js-line-labels
+                  = link_to  line_labels_charts_path, remote: true do
+                    %i.icon-chevron-right
+                    With data labels
+            / demo charts master view
+            .span9
+              %section#basic_line
+              %section#line_ajax
+              %section#line-labels
+
+        = yield
+
+      .jqm-footer{"data-position" => "fixed", "data-role" => "footer", "data-tap-toggle" => "false", "data-theme" => "a" }
+        -#, :style => "z-index:10;"
+        %div{"data-iconpos" => "bottom", "data-role" => "navbar"}
+          %ul
+            %li
+              %a{"data-icon" => "grid", :href => "/", "data-ajax" => "false"} Главная
+            - if current_login.has_role? :admin or current_login.has_role? :root
+              %li
+                %a{"data-icon" => "user", :href => "/logins", "data-ajax" => "false"} Пользователи
+            %li
+              %a{"data-icon" => "gear", "data-ajax" => "false", :href => "/logins/sign_out"} Выход
+
+
+      - if current_login.has_role? :admin or current_login.has_role? :root
+        #leftpanel3.jqm-navmenu-panel{"data-dismissible" => "true","data-display" => "overlay", "data-position" => "left", "data-role" => "panel", "data-theme" => "b"}
+          %ul.jqm-list.ui-alt-icon.ui-nodisc-icon{"data-role"=>"listview", "data-theme" => "c"}
+            %li{"data-filtertext" => "demos homepage", "data-icon" => "home"}
+              %a{:href => "/", "data-ajax" => "false"} Панель
+            %li{"data-icon" => "user"}
+              %a{"data-ajax" => "false", :href => "/smenas/"} Смены
+
+            %li{"data-icon" => "star"}
+              %a{"data-ajax" => "false", :href => "/schets/"} Счета
+            %li{"data-icon" => "user"}
+              %a{"data-ajax" => "false", :href => "/rabs/"} Работники
+            %li{"data-icon" => "arrow-u-r"}
+              %a{"data-ajax" => "false", :href => "/dohods/"} Доходы
+            %li{"data-icon" => "arrow-d-r"}
+              %a{"data-ajax" => "false", :href => "/rashods/"} Расходы
+            %li{"data-icon" => "forward"}
+              %a{"data-ajax" => "false", :href => "/perevods/"} Переводы
+            %li.ui-collapsible.ui-collapsible-themed-content.ui-collapsible-collapsed{"data-collapsed-icon" => "carat-d", "data-enhanced" => "true", "data-expanded-icon" => "carat-u", "data-iconpos" => "right", "data-inset" => "false", "data-role" => "collapsible"}
+              %h3.ui-collapsible-heading.ui-collapsible-heading-collapsed
+                %a.ui-collapsible-heading-toggle.ui-btn.ui-btn-icon-right.ui-btn-inherit.ui-icon-carat-d{:href => "#"}
+                  Категории
+                  %span.ui-collapsible-heading-status нажмите чтобы развернуть
+              .ui-collapsible-content.ui-body-inherit.ui-collapsible-content-collapsed
+                %ul{"data-role"=>"listview"}
+                  %li{"data-filtertext" => ""}
+                    %a{"data-ajax" => "false", :href => "/cat_rashods/"} Расходы
+                  %li{"data-filtertext" => ""}
+                    %a{"data-ajax" => "false", :href => "/cat_dohods/"} Доходы
+            %li{"data-icon" => ""}
+              %a{"data-ajax" => "false", :href => "/logins/sign_out"} Выход
+
+
+      - else
+        #leftpanel3.jqm-navmenu-panel{"data-dismissible" => "true","data-display" => "overlay", "data-position" => "left", "data-role" => "panel", "data-theme" => "b"}
+          %ul.jqm-list.ui-alt-icon.ui-nodisc-icon{"data-role"=>"listview", "data-theme" => "c"}
+            %li{"data-filtertext" => "demos homepage", "data-icon" => "home"}
+              %a{:href => "/", "data-ajax" => "false"} Панель
+            %li{"data-icon" => "user"}
+              %a{"data-ajax" => "false", :href => "/smenas/"} Смены
+            %li{"data-icon" => "user"}
+              %a{"data-ajax" => "false", :href => "/rabs/"} Работники
+            %li{"data-icon" => ""}
+              %a{"data-ajax" => "false", :href => "/logins/sign_out"} Выход
+
+      #rightpanel3{"data-dismissible" => "true", "data-display" => "overlay", "data-position" => "right", "data-role" => "panel", "data-mini"=>"true", "data-theme" => "a"}
+        .panel-content
+          .s{:align => "center"}
+            %fieldset{"data-role" => "controlgroup", "data-type" => "horizontal", "data-mini"=>"true" }
+              %input#radio-choice-h-2a{:checked => "checked", :name => "radio-choice-h-2", :type => "radio", :value => "on", "data-theme" => "b"}/
+              %label.ssmal.igreen{:for => "radio-choice-h-2a", "data-mini"=>true} Доход
+              %input#radio-choice-h-2b.ired{:name => "radio-choice-h-2", :type => "radio", :value => "off", "data-mini"=>true, "data-theme" => "d"}/
+              %label.ssmal.ired{:for => "radio-choice-h-2b", "data-mini"=>true} Расход
+              %input#radio-choice-h-2c{:name => "radio-choice-h-2", :type => "radio", :value => "other", "data-theme" => "f"}/
+              %label.ssmal.ibrown{:for => "radio-choice-h-2c"} П-вод
+
+
+
+          #div-rashod{:style => "display:none;"}
+          #div-perevod{:style => "display:none;"}
+          #div-dohod
+

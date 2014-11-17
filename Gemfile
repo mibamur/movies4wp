@@ -38,9 +38,53 @@ group :development, :test do
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0.0.beta4'
+  gem 'better_errors'
+  gem 'quiet_assets'
+  gem 'pry'
+  gem 'pry-rails'
+  gem 'binding_of_caller'
+  gem 'meta_request'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   #gem 'spring'
 end
+
+gem 'cocoon'
+
+gem 'thin'
+gem 'haml'
+gem 'html2haml'
+gem 'haml-rails'
+gem 'carrierwave'
+gem 'paperclip'
+gem 'mini_magick'
+gem 'roo'
+gem 'rails-i18n'
+gem 'i18n-js'
+gem 'i18n-tasks'
+gem 'paper_trail'
+gem 'rails-breadcrumbs'
+gem 'seed_dump'
+gem 'will_paginate'
+gem 'will-paginate-i18n'
+gem 'friendly_id'
+gem 'babosa'
+gem 'metamagic'
+
+# group :development do
+# end
+
+gem 'jquery_mobile_rails'
+gem 'devise'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
+gem 'cancancan'
+gem 'rolify'
+
+# gem 'jQuery-Validation-Engine-rails'
+
+gem 'lazy_high_charts'
+gem 'default_value_for'
+gem 'nvd3-rails', git: 'git@github.com:adeven/nvd3-rails.git', submodules: true
 
 

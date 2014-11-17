@@ -1,5 +1,18 @@
 Rails.application.routes.draw do
-  # The priority is based upon order of creation: first created -> highest priority.
+
+    resources :charts do
+    collection do
+      get 'basic_line'
+      get 'line_ajax'
+      get 'line_labels'
+    end
+  end
+
+  devise_for :logins
+  resources :logins
+  resources :roles
+  get 'home/index'
+  root "home#index"  # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
@@ -54,3 +67,4 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 end
+

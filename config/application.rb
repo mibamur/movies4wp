@@ -8,6 +8,14 @@ Bundler.require(*Rails.groups)
 
 module Kinoweb
   class Application < Rails::Application
+    config.i18n.default_locale         = :ru
+    config.generators.javascripts      false
+    config.generators.stylesheets      false
+    config.generators.test_framework   false
+    config.generators.helper           false
+    config.generators.assets           false
+    config.generators.template_engine  :haml
+    config.generators.orm              :active_record
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -24,3 +32,4 @@ module Kinoweb
     config.active_record.raise_in_transactional_callbacks = true
   end
 end
+
