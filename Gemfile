@@ -90,3 +90,10 @@ gem 'nvd3-rails', git: 'git@github.com:adeven/nvd3-rails.git', submodules: true
 
 gem 'responders'
 gem 'meta-tags'
+gem 'enceladus'
+gem 'themoviedb'
+gem 'imdb'
+gem 'awesome_print'
+gem 'kinopoisk_parser'
+gem 'rubypress'
+

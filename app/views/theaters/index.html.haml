@@ -1,0 +1,85 @@
+%h1
+  = t(:theaters)
+  = link_to new_theater_path, "data-ajax" => "false" do
+    .ui-shadow.ui-btn.ui-corner-all.ui-btn-inline.ui-icon-plus.ui-btn-icon-notext.ui-btn-b{"data-theme" => "b", "data-ajax"=>"false", :style=>"float:right;"}
+      = t(:new)
+
+.docs-main
+  %table#tabl_theater.tablesaw{"data-minimap" => "", "data-mode" => "swipe", "data-mode-switch" => "", "data-sortable" => "", "data-sortable-switch" => ""}
+    %thead
+      %tr
+
+
+        %th{"data-priority" => "1", "data-sortable-col" => ""}= t(:post_title)
+
+        %th{"data-priority" => "2", "data-sortable-col" => ""}= t(:post_name)
+
+        %th{"data-priority" => "3", "data-sortable-col" => ""}= t(:post_content)
+
+        %th{"data-priority" => "4", "data-sortable-col" => ""}= t(:post_status)
+
+        %th{"data-priority" => "5", "data-sortable-col" => ""}= t(:sticky)
+
+        %th{"data-priority" => "6", "data-sortable-col" => ""}= t(:custom_fields)
+
+        %th{"data-priority" => "7", "data-sortable-col" => ""}= t(:movies_length)
+
+        %th{"data-priority" => "8", "data-sortable-col" => ""}= t(:event_imdb_url)
+
+        %th{"data-priority" => "9", "data-sortable-col" => ""}= t(:poster)
+
+        %th{"data-priority" => "10", "data-sortable-col" => ""}= t(:poster_big)
+
+        %th{"data-priority" => "11", "data-sortable-col" => ""}= t(:kinopoisk_id)
+
+        %th.sum= t(:main_price)
+        %th{"data-priority" => "", "data-sortable-col" => ""}
+    %tbody
+      - @theaters.each do |theater|
+        %tr
+
+          %td
+            = theater.post_title
+
+
+          %td
+            = link_to theater do
+              = theater.post_name
+          %td
+            = theater.post_content
+
+          %td
+            = theater.post_status
+
+
+          %td
+            = theater.sticky ? "Да" : "Нет"
+          
+          %td
+            = theater.custom_fields
+
+          %td
+            = theater.movies_length
+
+          %td
+            = theater.event_imdb_url
+
+          %td
+            = theater.poster
+
+          %td
+            = theater.poster_big
+
+          %td
+            = theater.kinopoisk_id
+
+          %td
+            = theater.main_price
+
+          %td
+            = link_to 'Изменить', edit_theater_path(theater), :class => "ui-btn ui-btn-icon-left ui-icon-edit", "data-ajax" => false
+            = link_to 'Удалить', theater, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "ui-btn ui-btn-icon-left ui-icon-delete", "data-ajax" => false
+
+
+
+

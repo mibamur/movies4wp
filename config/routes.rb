@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  resources :theaters do
+  # CSV,XLS special for import action
+    collection { post :import }
+  end
+
     resources :charts do
     collection do
       get 'basic_line'

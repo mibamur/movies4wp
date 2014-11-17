@@ -1,0 +1,9 @@
+// Удаление
+
+// Уведомление 
+var theater_#{@theater_id} = function(){ new PNotify({ title: "Запись #{@theater.name} удалена.", type: 'error', icon: false, hide: true, delay: 1500, buttons: { sticker: false } })};
+theater_#{@theater_id}();
+
+// Удаление из dataTables
+$("#theater_#{@theater_id}").remove();
+

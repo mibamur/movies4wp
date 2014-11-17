@@ -1,0 +1,72 @@
+= form_for @theater, "data-ajax" => false do |f|
+  - if @theater.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@theater.errors.count, "error")} prohibited this rab from being saved:"
+      %ul
+        - @theater.errors.full_messages.each do |msg|
+          %li= msg
+  %div{ :class=>"post_title"}
+    .field
+      = f.label t(:post_title)
+      = f.text_field :post_title
+
+  %div{ :class=>"post_name"}
+    .field
+      = f.label t(:post_name)
+      = f.text_field :post_name
+
+  %div{ :class=>"post_content"}
+    .field
+      = f.label t(:post_content)
+      = f.text_area :post_content
+
+  %div{ :class=>"post_status"}
+    .field
+      = f.label t(:post_status)
+      = f.text_field :post_status
+
+  %div{ :class=>"sticky"}
+    .field
+      = f.label t(:sticky)
+    = f.check_box :sticky
+
+  %div{ :class=>"custom_fields"}
+    .field
+      = f.label t(:custom_fields)
+      = f.text_area :custom_fields
+
+  %div{ :class=>"movies_length"}
+    .field
+      = f.label t(:movies_length)
+      = f.number_field :movies_length
+
+  %div{ :class=>"event_imdb_url"}
+    .field
+      = f.label t(:event_imdb_url)
+      = f.text_field :event_imdb_url
+
+  %div{ :class=>"poster"}
+    .field
+      = f.label t(:poster)
+      = f.text_field :poster
+
+  %div{ :class=>"poster_big"}
+    .field
+      = f.label t(:poster_big)
+      = f.text_field :poster_big
+
+  %div{ :class=>"kinopoisk_id"}
+    .field
+      = f.label t(:kinopoisk_id)
+      = f.number_field :kinopoisk_id
+
+  %div{ :class=>"main_price"}
+    .field
+      = f.label t(:main_price)
+      = f.text_field :main_price
+
+      - 'TABB'
+  %div
+    .field
+      = f.submit t('.save', :default => t("helpers.links.save")), :class => "btn btn-primary", "data-ajax" => false
+

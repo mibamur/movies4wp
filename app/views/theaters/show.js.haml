@@ -1,0 +1,13 @@
+// для Модала при создании
+
+// Уведомление 
+var theater_#{@theater_id}_show = function(){ new PNotify({ title: "Запись #{@theater.name} создана.", type: 'success', icon: false, hide: true, delay: 1500, buttons: { sticker: false } })};
+theater_#{@theater_id}_show();
+
+// Добавление в dataTables
+// $('#dataTables_theater').append("#{j render partial: 'theaters/dataTable/index_td', locals: {theater: @theater }}");
+
+
+
+// Вызов функции Модала
+$('#new_theater_modal').modal_success();
