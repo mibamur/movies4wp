@@ -1,0 +1,12 @@
+ru:
+  flash:
+    actions:
+      create:
+        notice: 'Запись %{resource_name} создана.'
+        # alert: '%{resource_name} could not be created.'
+      update:
+        notice: 'Запись %{resource_name} обновлена.'
+        # alert: '%{resource_name} could not be updated.'
+      destroy:
+        notice: 'Запись %{resource_name} уничтожена.'
+        alert: 'Запись %{resource_name} не может быть удалена.'
