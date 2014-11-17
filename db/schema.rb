@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141023035742) do
+ActiveRecord::Schema.define(version: 20141117064105) do
 
   create_table "logins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -48,6 +48,23 @@ ActiveRecord::Schema.define(version: 20141023035742) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
   add_index "roles", ["name"], name: "index_roles_on_name"
+
+  create_table "theaters", force: true do |t|
+    t.string   "post_title"
+    t.string   "post_name"
+    t.text     "post_content"
+    t.string   "post_status"
+    t.boolean  "sticky"
+    t.text     "custom_fields"
+    t.integer  "movies_length"
+    t.string   "event_imdb_url"
+    t.string   "poster"
+    t.string   "poster_big"
+    t.integer  "kinopoisk_id"
+    t.decimal  "main_price",     precision: 8, scale: 2
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+  end
 
   create_table "versions", force: true do |t|
     t.string   "item_type",  null: false
