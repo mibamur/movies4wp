@@ -1,5 +1,18 @@
 Rails.application.routes.draw do
 
+  post ':controller(/:action(/:id))(.:format)'
+  get ':controller(/:action(/:id))(.:format)'
+  get '/logout' => 'sessions#destroy', :as => 'logout'
+  get '/auth/failure' => 'sessions#failure'
+  post '/auth/:provider/callback' => 'sessions#create'
+  resources :sessions
+  resources :identities
+  root :to => 'mindapp#index'
+  resources :products do
+  # CSV,XLS special for import action
+    collection { post :import }
+  end
+
   resources :theaters do
   # CSV,XLS special for import action
     collection { post :import }
@@ -13,7 +26,12 @@ Rails.application.routes.draw do
     end
   end
 
-  mount Upmin::Engine => '/admin'
+
+  authenticate :login, lambda { |u| u.admin? } do
+    mount Upmin::Engine => '/admin'
+  end
+
+  #mount Upmin::Engine => '/admin'
 
   devise_for :logins
   resources :logins

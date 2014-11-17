@@ -1,0 +1,9 @@
+// Удаление
+
+// Уведомление 
+var product_#{@product_id} = function(){ new PNotify({ title: "Запись #{@product.name} удалена.", type: 'error', icon: false, hide: true, delay: 1500, buttons: { sticker: false } })};
+product_#{@product_id}();
+
+// Удаление из dataTables
+$("#product_#{@product_id}").remove();
+

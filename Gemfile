@@ -38,13 +38,13 @@ group :development, :test do
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0.0.beta4'
-  gem 'better_errors'
+  #gem 'better_errors'
   gem 'quiet_assets'
   gem 'pry'
   gem 'pry-rails'
-  gem 'binding_of_caller'
+  #gem 'binding_of_caller'
   gem 'meta_request'
-
+  gem 'puma'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   #gem 'spring'
 end
@@ -98,3 +98,17 @@ gem 'kinopoisk_parser'
 gem 'rubypress'
 
 gem 'upmin-admin'
+gem 'ransack', github: 'activerecord-hackery/ransack', branch: 'rails-4.2'
+#gem 'mindapp', :git=> "git@github.com:songrit/mindapp.git"
+
+#gem 'mongo'
+#gem 'bson_ext'
+#gem 'mongoid', '~> 4.0.0'
+#gem 'nokogiri'
+#gem 'mail'
+#gem 'prawn'
+#gem 'redcarpet'
+#gem 'bcrypt-ruby', '~> 3.0.0'
+#gem 'omniauth-identity'
+#gem 'cloudinary'
+#gem 'kaminari'

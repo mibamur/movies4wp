@@ -1,0 +1,13 @@
+// для Модала при создании
+
+// Уведомление 
+var product_#{@product_id}_show = function(){ new PNotify({ title: "Запись #{@product.name} создана.", type: 'success', icon: false, hide: true, delay: 1500, buttons: { sticker: false } })};
+product_#{@product_id}_show();
+
+// Добавление в dataTables
+// $('#dataTables_product').append("#{j render partial: 'products/dataTable/index_td', locals: {product: @product }}");
+
+
+
+// Вызов функции Модала
+$('#new_product_modal').modal_success();
