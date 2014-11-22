@@ -27,12 +27,16 @@
 //= require timeBox
 //= require mobile_datebox_i18n_ru
 
-// require highcharts/highcharts                                                           
-// require highcharts/highcharts-more                                                         
+// require highcharts/highcharts
+// require highcharts/highcharts-more
 // require highcharts/highstock
 // require highcharts/modules/exporting
 // require highcharts-data
 //= require cocoon
+//= require jquery.role
+
+//= require wiselinks
+//= require wise
 
   // $.mobile.ajaxLinksEnabled = false;
   // $('form').attr("data-ajax", "false");
@@ -154,7 +158,7 @@ $( "body" ).on( "pageinit", function() {
     if( $(".formDRP").valid() ){
       // post validation code
       // form.submit()
-      
+
     }
 
     // $( "form" ).validate({
@@ -192,4 +196,3 @@ $(document).on( "mobileinit", function() {
   // $.mobile.selectmenu.prototype.options.nativeMenu = false;
   $.mobile.ajaxLinksEnabled = false;
 });
-

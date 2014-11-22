@@ -1,6 +1,9 @@
 %ul{"data-role" => "listview"}
-  %li
-    name
-    %span.ui-li-count
-      23
-
+  - @models.each do |m|
+    - if not m=~/HABTM/ and not m=~/\:\:/
+      %li
+        = m
+        %span.ui-li-count
+          - if not m=~/HABTM/
+            - clazz = "#{m}".constantize
+            = clazz.count

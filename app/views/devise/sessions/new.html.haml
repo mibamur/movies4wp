@@ -2,13 +2,9 @@
 
 = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
   %div
-    = f.label :email
-    %br/
-    = f.email_field :email, {"data-theme" => "a"}
+    = f.email_field :email, {"data-theme" => "d"}, :placeholder=>"email"
   %div
-    = f.label :password
-    %br/
-    = f.password_field :password, {"data-theme" => "a"}
+    = f.password_field :password, {"data-theme" => "c"}, :placeholder=>t(:password)
   - if devise_mapping.rememberable?
     %div
       = f.check_box :remember_me, {"data-theme" => "b"}

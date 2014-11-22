@@ -1,0 +1,115 @@
+yum install geany
+
+yum install pygtk2 pygtk2-devel
+#yum install glade  ## No need - we're doing this with raw GTK
+
+# For Oly's geany-project-manager
+## yum install python-eventlet python-psycopg2  ## No need - don't use this any more
+
+# For project-tree
+## yum install PyYAML  ## No need - ConfigParser is in standard libraries
+
+cd {project-tree main directory itself from git}
+ln -s `pwd`/project-tree ~/.config/geany/plugins/geanypy/plugins/
+
+ToDos :
+
+DONE  Need to detect whether start directory contains a .geany/ folder
+DONE  Load project_sample.ini file if it's in .geany
+DONE  Double-1-Click on a group to open/close branch
+DONE  Double-1-Click on a file to open it in editor (row-activated)
+
+DONE  1-Click on file == just change selection (== noop in signal handler)
+DONE  1-Click on path == just change selection (== noop in signal handler)
+
+DONE  Drag-and-Drop for files and groups
+DONE  Save current layout in a config_tree_layout_file
+
+DONE  Auto menubar populator from annotated class.method names
+DONE  Auto popup populator from annotated class.method names
+
+DONE  3-Click : Add new group 'here'
+DONE  3-Click : Rename this entry (group or file)
+DONE  3-Click : Add current file 'here'
+DONE  3-Click : Delete this entry (group or file)
+
+DONE  Relative filenames should be w.r.t directory in which .geany lives
+DONE  Relative filenames should be correct.
+DONE  AddGroup dialog should have OK button as default action
+
+DONE  If no .geany/, offer to create one
+DONE  Ask about .geany path : GtkWidget* ui_path_box_new	(	const gchar * 	title, GtkFileChooserAction 	action, GtkEntry * 	entry )		
+DONE  If .geany found, load a project.ini file (this file is "stable" enough for a user to want to add to git)
+DONE  Option to Load project tree from a chosen .ini (if the .geany folder doesn't exist, for instance)
+DONE  Option to Load project tree from scitepm.xml file
+
+DONE  Session stores open files
+DONE  Save current files in a config_session_file
+DONE  If .geany found, load a session.ini file (probably not added to git)
+DONE  Load current files from config_session_file (or config_session_file_initial if it doesn't exist)
+
+If there's no current project-tree-base-directory, then how do we do relative files??
+May be best to guess the current base directory upon initial loading (or loading of a specific file)
+
+Create a suitable README.rst
+Split off this twig from 'sketchpad' git repo
+Prepare github for receiving 'geany-project-tree' repo
+Upload repo
+Check README.rst and revisions work cleanly
+Announce on geany-plugin-devel
+
+
+Goto correct line upon session load  : gboolean 	editor_goto_pos (GeanyEditor *editor, gint pos, gboolean mark)
+
+If no .geany/, recurse upwards until {find a .git folder}
+
+Session stores open leaves in project tree
+
+Save session on close?
+Save project on close? :: Not clear whether there's a suitable signal handle to latch onto
+
+
+# Check authors & emails of git log :
+git log --all --format='Author=%aN <%aE>; Committer=%cN <%cE>' | sort -u
+
+# Unify authors (so that github totals correct): 
+## Also see : http://stackoverflow.com/a/8444091/929736
+#!/bin/sh
+ 
+git filter-branch --env-filter '
+ 
+an="$GIT_AUTHOR_NAME"
+am="$GIT_AUTHOR_EMAIL"
+cn="$GIT_COMMITTER_NAME"
+cm="$GIT_COMMITTER_EMAIL"
+ 
+if [ "$GIT_COMMITTER_EMAIL" = "your@email.to.match" ]
+then
+cn="Your New Committer Name"
+cm="Your New Committer Email"
+fi
+if [ "$GIT_AUTHOR_EMAIL" = "your@email.to.match" ]
+then
+an="Your New Author Name"
+am="Your New Author Email"
+fi
+ 
+export GIT_AUTHOR_NAME="$an"
+export GIT_AUTHOR_EMAIL="$am"
+export GIT_COMMITTER_NAME="$cn"
+export GIT_COMMITTER_EMAIL="$cm"
+'
+
+# i.e. -- to unify both...
+git filter-branch -f --env-filter '
+m="$GIT_AUTHOR_EMAIL"
+if [ "$GIT_AUTHOR_EMAIL" = "Martin.Andrews@PLATFORMedia.com" ]
+then
+m="GitHub@mdda.net"
+fi
+export GIT_COMMITTER_EMAIL="$m"
+export GIT_AUTHOR_EMAIL="$m"
+' -- --all
+
+# This appears to require a little forcing...
+git push -f

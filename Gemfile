@@ -42,7 +42,7 @@ group :development, :test do
   gem 'quiet_assets'
   gem 'pry'
   gem 'pry-rails'
-  #gem 'binding_of_caller'
+  gem 'binding_of_caller'
   gem 'meta_request'
   gem 'puma'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
@@ -111,4 +111,10 @@ gem 'ransack', github: 'activerecord-hackery/ransack', branch: 'rails-4.2'
 #gem 'bcrypt-ruby', '~> 3.0.0'
 #gem 'omniauth-identity'
 #gem 'cloudinary'
+#~ gem 'htmlbeautifier', github: 'threedaymonk/htmlbeautifier'
+#~ gem 'ruby-beautify', github: 'erniebrodeur/ruby-beautify'
 #gem 'kaminari'
+
+
+gem 'wiselinks'
+gem 'role-rails'
