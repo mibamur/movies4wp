@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141117180407) do
+ActiveRecord::Schema.define(version: 20141122130848) do
+
+  create_table "charts", force: true do |t|
+    t.string "name"
+  end
 
   create_table "friendly_id_slugs", force: true do |t|
     t.string   "slug",                      null: false
