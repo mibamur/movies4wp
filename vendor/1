@@ -1,0 +1,90 @@
+    #actors ⇒ Object
+
+    Returns an array of strings containing actor names.
+    #art_directors ⇒ Object
+
+    Returns an array of strings containing art director names.
+    #box_office_ru ⇒ Object
+
+    Returns a string containing Russia box-office.
+    #box_office_us ⇒ Object
+
+    Returns a string containing USA box-office.
+    #box_office_world ⇒ Object
+
+    Returns a string containing world box-office.
+    #budget ⇒ Object
+
+    Returns a string containing budget for the movie.
+    #composers ⇒ Object
+
+    Returns an array of strings containing composer names.
+    #countries ⇒ Object
+
+    Returns an array of strings containing countries.
+    #description ⇒ Object
+
+    Returns a string containing movie description.
+    #directors ⇒ Object
+
+    Returns an array of strings containing director names.
+    #duration ⇒ Object
+
+    Returns a string containing duration of the film.
+    #editors ⇒ Object
+
+    Returns an array of strings containing editor names.
+    #genres ⇒ Object
+
+    Returns an array of strings containing genres.
+    #imdb_rating ⇒ Object
+
+    Returns a float imdb rating.
+    #imdb_rating_count ⇒ Object
+
+    Returns an integer imdb rating vote count.
+    #initialize(input, title = nil) ⇒ Movie constructor
+
+    New instance can be initialized with id(integer) or title(string).
+    #length ⇒ Object
+
+    Returns an integer length of the movie in minutes.
+    #minimal_age ⇒ Object
+
+    Returns a string containing minimal age.
+    #operators ⇒ Object
+
+    Returns an array of strings containing operator names.
+    #poster ⇒ Object
+
+    Returns a url to a small sized poster.
+    #poster_big ⇒ Object
+
+    Returns a url to a big sized poster.
+    #premiere_ru ⇒ Object
+
+    Returns a string containing Russian premiere date.
+    #premiere_world ⇒ Object
+
+    Returns a string containing world premiere date.
+    #producers ⇒ Object
+
+    Returns an array of strings containing producer names.
+    #rating ⇒ Object
+
+    Returns a float kinopoisk rating.
+    #rating_count ⇒ Object
+
+    Returns an integer kinopoisk rating vote count.
+    #slogan ⇒ Object
+
+    Returns a string containing movie slogan.
+    #title_en ⇒ Object
+
+    Returns a string containing title in english.
+    #writers ⇒ Object
+
+    Returns an array of strings containing writer names.
+    #year ⇒ Object
+
+    Returns an integer release y

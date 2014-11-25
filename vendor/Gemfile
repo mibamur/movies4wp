@@ -1,0 +1,5 @@
+source 'https://rubygems.org'
+
+gem 'modelize', github: 'yonelacort/modelize', branch: 'master'
+gem 'pry'
+gem 'pry-rails'
