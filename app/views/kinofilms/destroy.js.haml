@@ -1,0 +1,9 @@
+// Удаление
+
+// Уведомление 
+var kinofilm_#{@kinofilm_id} = function(){ new PNotify({ title: "Запись #{@kinofilm.name} удалена.", type: 'error', icon: false, hide: true, delay: 1500, buttons: { sticker: false } })};
+kinofilm_#{@kinofilm_id}();
+
+// Удаление из dataTables
+$("#kinofilm_#{@kinofilm_id}").remove();
+

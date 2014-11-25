@@ -1,0 +1,13 @@
+// для Модала при создании
+
+// Уведомление 
+var kinozal_#{@kinozal_id}_show = function(){ new PNotify({ title: "Запись #{@kinozal.name} создана.", type: 'success', icon: false, hide: true, delay: 1500, buttons: { sticker: false } })};
+kinozal_#{@kinozal_id}_show();
+
+// Добавление в dataTables
+// $('#dataTables_kinozal').append("#{j render partial: 'kinozals/dataTable/index_td', locals: {kinozal: @kinozal }}");
+
+
+
+// Вызов функции Модала
+$('#new_kinozal_modal').modal_success();

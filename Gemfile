@@ -97,6 +97,12 @@ gem 'awesome_print'
 gem 'kinopoisk_parser'
 gem 'rubypress'
 
+gem 'tiny_tds'
+gem 'chronic'
+gem 'smarter_csv'
+
+
+
 gem 'upmin-admin'
 gem 'ransack', github: 'activerecord-hackery/ransack', branch: 'rails-4.2'
 #gem 'mindapp', :git=> "git@github.com:songrit/mindapp.git"
@@ -118,3 +124,6 @@ gem 'ransack', github: 'activerecord-hackery/ransack', branch: 'rails-4.2'
 
 gem 'wiselinks'
 gem 'role-rails'
+
+
+gem 'delayed_job_active_record' 

@@ -1,0 +1,59 @@
+%h1
+  = t(:kinodoms)
+  = link_to new_kinodom_path, "data-ajax" => "false" do
+    .ui-shadow.ui-btn.ui-corner-all.ui-btn-inline.ui-icon-plus.ui-btn-icon-notext.ui-btn-b{"data-theme" => "b", "data-ajax"=>"false", :style=>"float:right;"}
+      = t(:new)
+
+.docs-main
+  %table#tabl_kinodom.tablesaw{"data-minimap" => "", "data-mode" => "swipe", "data-mode-switch" => "", "data-sortable" => "", "data-sortable-switch" => ""}
+    %thead
+      %tr
+
+
+        %th{"data-priority" => "1", "data-sortable-col" => ""}= t(:name)
+
+        %th{"data-priority" => "2", "data-sortable-col" => ""}= t(:desc)
+
+        %th{"data-priority" => "3", "data-sortable-col" => ""}= t(:remote_server)
+
+        %th{"data-priority" => "4", "data-sortable-col" => ""}= t(:local_server)
+
+        %th{"data-priority" => "5", "data-sortable-col" => ""}= t(:login)
+
+        %th{"data-priority" => "6", "data-sortable-col" => ""}= t(:pass)
+
+        %th{"data-priority" => "7", "data-sortable-col" => ""}= t(:db)
+        %th{"data-priority" => "", "data-sortable-col" => ""}
+    %tbody
+      - @kinodoms.each do |kinodom|
+        %tr
+
+
+          %td
+            = link_to kinodom do
+              = kinodom.name
+          %td
+            = kinodom.desc
+
+          %td
+            = kinodom.remote_server
+
+          %td
+            = kinodom.local_server
+
+          %td
+            = kinodom.login
+
+          %td
+            = kinodom.pass
+
+          %td
+            = kinodom.db
+
+          %td
+            = link_to 'Изменить', edit_kinodom_path(kinodom), :class => "ui-btn ui-btn-icon-left ui-icon-edit", "data-ajax" => false
+            = link_to 'Удалить', kinodom, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "ui-btn ui-btn-icon-left ui-icon-delete", "data-ajax" => false
+
+
+
+

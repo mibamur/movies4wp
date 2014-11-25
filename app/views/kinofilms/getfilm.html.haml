@@ -1,0 +1,17 @@
+%h1
+  = t(:kinofilms)+" в базе билетов"
+
+%ul.ui-listview-outer{"data-role" => "listview"}
+  - @kinofilms.uniq.each do |k|
+    %li{"data-corners" => "true", "data-iconpos" => "right", "data-role" => "collapsible", "data-shadow" => "false"}
+      %h2= k
+      %ul{"data-corners" => "true", "data-inset" => "true", "data-role" => "listview", "data-shadow" => "false"}
+        - s = Kinopoisk::Search.new '#{k}'
+        %li= s.movies.first.title
+        %li= s.movies.first.title_en
+        %li= s.movies.first.url
+        %li= s.movies.first.duration
+        %li= s.movies.first.length
+        %li= s.movies.first.minimal_age
+        %li= s.movies.first.poster
+    - break

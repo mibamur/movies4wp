@@ -1,6 +1,24 @@
 Rails.application.routes.draw do
 
-  resources :products do
+  resources :kinofilms do
+  # CSV,XLS special for import action
+    collection do
+      post :import
+      get :getfilm
+    end
+  end
+
+  resources :kinodoms do
+  # CSV,XLS special for import action
+    collection { post :import }
+  end
+
+  resources :kinofilm_datetimes do
+  # CSV,XLS special for import action
+    collection { post :import }
+  end
+
+  resources :kinozals do
   # CSV,XLS special for import action
     collection { post :import }
   end

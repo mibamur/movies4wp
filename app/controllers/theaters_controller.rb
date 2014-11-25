@@ -5,16 +5,16 @@ class TheatersController < ApplicationController
 
   def index
     @theaters = Theater.all
-    respond_with(@theaters)
+    respond_with(@theaters, :location=>theaters_path)
   end
 
   def show
-    respond_with(@theater)
+    respond_with(@theater, :location=>theaters_path)
   end
 
   def new
     @theater = Theater.new
-    respond_with(@theater)
+    respond_with(@theater, :location=>theaters_path)
   end
 
   def edit
@@ -23,17 +23,18 @@ class TheatersController < ApplicationController
   def create
     @theater = Theater.new(theater_params)
     @theater.save
-    respond_with(@theater)
+    respond_with(@theater, :location=>theaters_path)
+    # redirect_to theaters_path, :notice => "Кинотеатр создан"
   end
 
   def update
     @theater.update(theater_params)
-    respond_with(@theater)
+    respond_with(@theater, :location=>theaters_path)
   end
 
   def destroy
     @theater.destroy
-    respond_with(@theater)
+    respond_with(@theater, :location=>theaters_path)
   end
 
   private

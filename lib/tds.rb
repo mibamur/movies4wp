@@ -5,7 +5,7 @@ require 'csv'
 require 'awesome_print'
 require 'smarter_csv'
 
-client = TinyTds::Client.new(:username => 'sa', :password => '', :host => '192.168.201.21')
+client = TinyTds::Client.new(:username => 'sa', :password => '', :host => '192.168.201.17')
 
 #~ puts client.dead?    # => false
 #~ puts client.closed?  # => false

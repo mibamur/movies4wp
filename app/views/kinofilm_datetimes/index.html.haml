@@ -1,0 +1,47 @@
+%h1
+  = t(:kinofilm_datetimes)
+  = link_to new_kinofilm_datetime_path, "data-ajax" => "false" do
+    .ui-shadow.ui-btn.ui-corner-all.ui-btn-inline.ui-icon-plus.ui-btn-icon-notext.ui-btn-b{"data-theme" => "b", "data-ajax"=>"false", :style=>"float:right;"}
+      = t(:new)
+
+.docs-main
+  %table#tabl_kinofilm_datetime.tablesaw{"data-minimap" => "", "data-mode" => "swipe", "data-mode-switch" => "", "data-sortable" => "", "data-sortable-switch" => ""}
+    %thead
+      %tr
+
+
+        %th{"data-priority" => "1", "data-sortable-col" => ""}= t(:seans_date)
+
+        %th{"data-priority" => "2", "data-sortable-col" => ""}= t(:seans_time)
+
+        %th{"data-priority" => "3", "data-sortable-col" => ""}= t(:kinozal)
+
+        %th{"data-priority" => "4", "data-sortable-col" => ""}= t(:kinofilm)
+        %th{"data-priority" => "", "data-sortable-col" => ""}
+    %tbody
+      - @kinofilm_datetimes.each do |kinofilm_datetime|
+        %tr
+
+          %td
+            = kinofilm_datetime.seans_date
+
+          %td
+            = kinofilm_datetime.seans_time
+
+
+          %td
+            - if kinofilm_datetime.kinozal_id
+              = kinofilm_datetime.kinozal.name
+          
+
+          %td
+            - if kinofilm_datetime.kinofilm_id
+              = kinofilm_datetime.kinofilm.name
+          
+          %td
+            = link_to 'Изменить', edit_kinofilm_datetime_path(kinofilm_datetime), :class => "ui-btn ui-btn-icon-left ui-icon-edit", "data-ajax" => false
+            = link_to 'Удалить', kinofilm_datetime, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "ui-btn ui-btn-icon-left ui-icon-delete", "data-ajax" => false
+
+
+
+

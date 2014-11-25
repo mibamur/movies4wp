@@ -17,7 +17,7 @@ class <%= controller_class_name %>Controller < ApplicationController
     # @<%= plural_table_name %> = <%= class_name %>.paginate :page => params[:page], :order => 'id DESC'
     @<%= plural_table_name %> = <%= orm_class.all(class_name) %>
     @<%= singular_table_name %> = <%= orm_class.build(class_name) %>
-    respond_with(@<%= plural_table_name %>, :location=><%= plural_table_name %>s_path )
+    respond_with(@<%= plural_table_name %>, :location=><%= plural_table_name %>_path )
   end
 
   # GET <%= route_url %>/1

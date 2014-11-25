@@ -1,0 +1,47 @@
+= form_for @kinodom, "data-ajax" => false do |f|
+  - if @kinodom.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@kinodom.errors.count, "error")} prohibited this rab from being saved:"
+      %ul
+        - @kinodom.errors.full_messages.each do |msg|
+          %li= msg
+  %div{ :class=>"name"}
+    .field
+      = f.label t(:name)
+      = f.text_field :name
+
+  %div{ :class=>"desc"}
+    .field
+      = f.label t(:desc)
+      = f.text_area :desc
+
+  %div{ :class=>"remote_server"}
+    .field
+      = f.label t(:remote_server)
+      = f.text_field :remote_server
+
+  %div{ :class=>"local_server"}
+    .field
+      = f.label t(:local_server)
+      = f.text_field :local_server
+
+  %div{ :class=>"login"}
+    .field
+      = f.label t(:login)
+      = f.text_field :login
+
+  %div{ :class=>"pass"}
+    .field
+      = f.label t(:pass)
+      = f.text_field :pass
+
+  %div{ :class=>"db"}
+    .field
+      = f.label t(:db)
+      = f.text_field :db
+
+      - 'TABB'
+  %div
+    .field
+      = f.submit t('.save', :default => t("helpers.links.save")), :class => "btn btn-primary", "data-ajax" => false
+

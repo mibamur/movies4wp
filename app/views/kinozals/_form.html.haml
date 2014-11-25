@@ -1,0 +1,22 @@
+= form_for @kinozal, "data-ajax" => false do |f|
+  - if @kinozal.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@kinozal.errors.count, "error")} prohibited this rab from being saved:"
+      %ul
+        - @kinozal.errors.full_messages.each do |msg|
+          %li= msg
+  %div{ :class=>"name"}
+    .field
+      = f.label t(:name)
+      = f.text_field :name
+
+  %div{ :class=>"kinodom"}
+    .field
+      = f.label t(:kinodom)
+      = collection_select(:kinozal, :kinodom_id, Kinodom.all, :id, :name, prompt: true)
+
+      - 'TABB'
+  %div
+    .field
+      = f.submit t('.save', :default => t("helpers.links.save")), :class => "btn btn-primary", "data-ajax" => false
+

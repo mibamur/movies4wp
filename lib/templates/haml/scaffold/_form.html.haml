@@ -12,7 +12,7 @@
     .field
       = f.label t(:<%= attribute.name %>)
       <%- if attribute.field_type =~ /check/ -%>
-    = f.<%= attribute.field_type %> :<%= attribute.name %>
+      = f.<%= attribute.field_type %> :<%= attribute.name %>, :class=>'check1'
       <%- else -%>
     <%- if attribute.password_digest? -%>
     = f.password_field :password

@@ -1,9 +1,9 @@
-= form_for @theater, "data-ajax" => false do |f|
-  - if @theater.errors.any?
+= form_for @kinofilm, "data-ajax" => false do |f|
+  - if @kinofilm.errors.any?
     #error_explanation
-      %h2= "#{pluralize(@theater.errors.count, "error")} prohibited this rab from being saved:"
+      %h2= "#{pluralize(@kinofilm.errors.count, "error")} prohibited this rab from being saved:"
       %ul
-        - @theater.errors.full_messages.each do |msg|
+        - @kinofilm.errors.full_messages.each do |msg|
           %li= msg
   %div{ :class=>"post_title"}
     .field
@@ -24,9 +24,10 @@
     .field
       = f.label t(:post_status)
       = f.text_field :post_status
-  %div
+
+  %div{ :class=>"sticky"}
     .field
-      = f.label 'Зацеплен'
+      = f.label t(:sticky)
       = f.check_box :sticky, :class=>'check1'
 
   %div{ :class=>"custom_fields"}
@@ -53,6 +54,11 @@
     .field
       = f.label t(:poster_big)
       = f.text_field :poster_big
+
+  %div{ :class=>"trailer"}
+    .field
+      = f.label t(:trailer)
+      = f.text_field :trailer
 
   %div{ :class=>"kinopoisk_id"}
     .field

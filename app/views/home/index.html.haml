@@ -1,9 +1,14 @@
-%ul{"data-role" => "listview"}
+%ul{"data-role" => "listview", 'data-theme'=>'c'}
   - @models.each do |m|
     - if not m=~/HABTM/ and not m=~/\:\:/
       %li
-        = m
-        %span.ui-li-count
-          - if not m=~/HABTM/
-            - clazz = "#{m}".constantize
-            = clazz.count
+        = link_to "#{m.underscore}s" do
+          = t("#{m.underscore}s")
+          -#%span.ui-li-count
+            - if not m=~/HABTM/
+              - clazz = "#{m}".constantize
+              = clazz.count
+            - else
+              -#%pre
+                - m
+              

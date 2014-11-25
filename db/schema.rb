@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141122130848) do
+ActiveRecord::Schema.define(version: 20141125022134) do
 
   create_table "charts", force: true do |t|
     t.string "name"
@@ -29,6 +29,57 @@ ActiveRecord::Schema.define(version: 20141122130848) do
   add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
+
+  create_table "kinodoms", force: true do |t|
+    t.string   "name"
+    t.text     "desc"
+    t.string   "remote_server"
+    t.string   "local_server"
+    t.string   "login"
+    t.string   "pass"
+    t.string   "db"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "kinofilm_datetimes", force: true do |t|
+    t.string   "seans_date"
+    t.string   "seans_time"
+    t.integer  "kinozal_id"
+    t.integer  "kinofilm_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "kinofilm_datetimes", ["kinofilm_id"], name: "index_kinofilm_datetimes_on_kinofilm_id"
+  add_index "kinofilm_datetimes", ["kinozal_id"], name: "index_kinofilm_datetimes_on_kinozal_id"
+
+  create_table "kinofilms", force: true do |t|
+    t.string   "post_title"
+    t.string   "post_name"
+    t.text     "post_content"
+    t.string   "post_status"
+    t.boolean  "sticky"
+    t.text     "custom_fields"
+    t.integer  "movies_length"
+    t.string   "event_imdb_url"
+    t.string   "poster"
+    t.string   "poster_big"
+    t.string   "trailer"
+    t.integer  "kinopoisk_id"
+    t.decimal  "main_price",     precision: 8, scale: 2
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+  end
+
+  create_table "kinozals", force: true do |t|
+    t.string   "name"
+    t.integer  "kinodom_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "kinozals", ["kinodom_id"], name: "index_kinozals_on_kinodom_id"
 
   create_table "logins", force: true do |t|
     t.string   "email",                  default: "", null: false

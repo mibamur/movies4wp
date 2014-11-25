@@ -17,6 +17,10 @@ module Kinoweb
 
     config.generators.template_engine  :haml
     config.generators.orm              :active_record
+
+    config.app_generators.scaffold_controller :responders_controller #:scaffold_controller
+
+    
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

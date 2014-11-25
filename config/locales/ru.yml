@@ -73,7 +73,6 @@ ru:
   new: Создать
   paid: "Оплачено"
   parent_group: "Подчиняется"
-  pass: pass
   phone2: Телефон
   phone3: Телефон
   phone: Телефон
@@ -231,9 +230,21 @@ ru:
   poster_big: Постер большой
   kinopoisk_id: kinopoisk_idd
   main_price: Цена базовая
+  kinodom: Кинотеатр
+  kinodoms: Кинотеатры
+  kinozal: Кинозал
+  kinozals: Кинозалы
+  kinofilm: Кинофильм
+  kinofilms: Кинофильмы
+  kinofilm_datetime: Сеанс
+  kinofilm_datetimes: Сеансы
+  seans_date: Дата сеанса
+  seans_time: Время сеанса
+  local_server: Сервер в сети
+  remote_server: Сервер в инете
+  db: База имя
 
   date:
     formats:
       default: "%d.%m.%Y"
       short: "%d.%m.%Y"
-

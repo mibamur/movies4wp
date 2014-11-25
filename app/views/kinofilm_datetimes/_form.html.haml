@@ -1,0 +1,32 @@
+= form_for @kinofilm_datetime, "data-ajax" => false do |f|
+  - if @kinofilm_datetime.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@kinofilm_datetime.errors.count, "error")} prohibited this rab from being saved:"
+      %ul
+        - @kinofilm_datetime.errors.full_messages.each do |msg|
+          %li= msg
+  %div{ :class=>"seans_date"}
+    .field
+      = f.label t(:seans_date)
+      = f.text_field :seans_date
+
+  %div{ :class=>"seans_time"}
+    .field
+      = f.label t(:seans_time)
+      = f.text_field :seans_time
+
+  %div{ :class=>"kinozal"}
+    .field
+      = f.label t(:kinozal)
+      = collection_select(:kinofilm_datetime, :kinozal_id, Kinozal.all, :id, :name, prompt: true)
+
+  %div{ :class=>"kinofilm"}
+    .field
+      = f.label t(:kinofilm)
+      = collection_select(:kinofilm_datetime, :kinofilm_id, Kinofilm.all, :id, :name, prompt: true)
+
+      - 'TABB'
+  %div
+    .field
+      = f.submit t('.save', :default => t("helpers.links.save")), :class => "btn btn-primary", "data-ajax" => false
+

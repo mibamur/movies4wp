@@ -1,4 +1,4 @@
-class Product < ActiveRecord::Base
+class KinofilmDatetime < ActiveRecord::Base
 
   # extend Enumerize
   # enumerize :some_field, in: [:one, "two", "last"]
@@ -18,6 +18,8 @@ class Product < ActiveRecord::Base
   #cocoon_marker_start
   #cocoon_marker_data
   #cocoon_marker_end
+  belongs_to :kinozal
+  belongs_to :kinofilm
 
   # before_save :do_something
 
@@ -27,9 +29,9 @@ class Product < ActiveRecord::Base
     header = spreadsheet.row(1)
     (2..spreadsheet.last_row).each do |i|
       row = Hash[[header, spreadsheet.row(i)].transpose]
-      product = find_by_id(row["id"]) || new
-      product.update row.to_hash
-      product.save!
+      kinofilm_datetime = find_by_id(row["id"]) || new
+      kinofilm_datetime.update row.to_hash
+      kinofilm_datetime.save!
     end
   end
 
@@ -45,14 +47,14 @@ class Product < ActiveRecord::Base
   def self.to_csv(options = {})
     CSV.generate(options) do |csv|
       csv << column_names
-      all.each do |product|
-        csv << product.attributes.values_at(*column_names)
+      all.each do |kinofilm_datetime|
+        csv << kinofilm_datetime.attributes.values_at(*column_names)
       end
     end
   end
 
   define_method :name do
-    "#{self.title}"
+    "#{self.seans_date} #{self.seans_time}"
   end
 
 end

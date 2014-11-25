@@ -1,0 +1,13 @@
+// для Модала при создании
+
+// Уведомление 
+var kinofilm_#{@kinofilm_id}_show = function(){ new PNotify({ title: "Запись #{@kinofilm.name} создана.", type: 'success', icon: false, hide: true, delay: 1500, buttons: { sticker: false } })};
+kinofilm_#{@kinofilm_id}_show();
+
+// Добавление в dataTables
+// $('#dataTables_kinofilm').append("#{j render partial: 'kinofilms/dataTable/index_td', locals: {kinofilm: @kinofilm }}");
+
+
+
+// Вызов функции Модала
+$('#new_kinofilm_modal').modal_success();
