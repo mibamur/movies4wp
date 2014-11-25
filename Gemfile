@@ -94,7 +94,7 @@ gem 'enceladus'
 gem 'themoviedb'
 gem 'imdb'
 gem 'awesome_print'
-gem 'kinopoisk_parser'
+gem 'kinopoisk_parser', path: '../KINOPOISK_DEV/mikhail-alhimik_kinopoisk_parser.git'
 gem 'rubypress'
 
 gem 'tiny_tds'

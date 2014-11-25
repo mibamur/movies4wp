@@ -64,6 +64,17 @@ class KinofilmsController < ApplicationController
       # @kinofilms << row['FNAME']+" "+ddate+" "+Time.at(row['FTIME'].to_i/100).getutc.strftime("%H:%M").to_s+" "+row['FBASE_PRICE'].to_s+" "+row['FDURATION'].to_s
       @kinofilms << row['FNAME']
     end
+
+
+    # @kinofilms.uniq.each do |k|
+    #   @s = Kinopoisk::Search.new k
+    #   @new_film = Kinofilm.new(:post_title=>@s.movies.first.title, :post_name=>k, :post_content=>@s.movies.first.description, :post_status=>false, :sticky=>false, :movies_length=>@s.movies.first.length, :poster=>@s.movies.first.poster, :poster_big=>@s.movies.first.poster_big, :kinopoisk_id=>@s.movies.first.id)
+    #   # @s.movies.first.title_en
+    #   # @s.movies.first.url
+    #   # @s.movies.first.minimal_age
+    #   # @s.movies.first.poster
+    # end
+
     respond_with(@kinofilms, :location=>kinofilms_path )
   end
 
